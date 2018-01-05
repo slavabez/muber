@@ -10,5 +10,5 @@ describe('The express app', () => {
                 assert(response.body.hi === "there");
                 done();
             });
-    })
+    });
 });
