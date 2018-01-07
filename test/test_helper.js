@@ -12,6 +12,8 @@ before(done => {
 beforeEach(done => {
     const {drivers} = mongoose.connection.collections;
     drivers.drop()
+        // Make usre indexing is correct
+        .then(() => drivers.ensureIndex({ 'geometry.coordinates': '2dsphere' }))
         // Dropped drivers
         .then(() => done())
         // Error dropping, but should be fine since nothing was in there
